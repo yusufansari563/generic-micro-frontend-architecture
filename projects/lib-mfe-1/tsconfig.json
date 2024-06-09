@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../out-tsc/lib-mfe-1",
+    "types": []
+  },
+  "files": [
+    "main.ts"
+  ]
+}

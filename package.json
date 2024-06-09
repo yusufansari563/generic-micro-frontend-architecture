@@ -1,0 +1,65 @@
+{
+  "name": "ui",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "cd projects/main && webpack serve --config webpack.config.js --mode development",
+    "dev:main": "cd projects/lib-main && webpack serve --config webpack.config.js --mode development",
+    "dev:mfe1": "cd projects/lib-mfe-1 && webpack serve --config webpack.config.js --mode development",
+    "build:main": "",
+    "build:main-lib": "",
+    "build:mfe1": "",
+    "build:mfe1-lib": "",
+    "build": "webpack --config ./projects/main/webpack.config.js --mode production",
+    "prebuild": "npm run lint && npm test",
+    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
+    "test": "jest",
+    "prepare": "husky install"
+  },
+  "husky": {
+    "hooks": {
+      "applypatch-msg": "echo \"[Husky] applypatch-msg\"",
+      "pre-applypatch": "echo \"[Husky] pre-applypatch\"",
+      "post-applypatch": "echo \"[Husky] post-applypatch\"",
+      "pre-commit": "echo \"[Husky] pre-commit\" "
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "private": "true",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.2.5",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.19",
+    "css-loader": "^7.1.1",
+    "html-webpack-plugin": "^5.6.0",
+    "postcss": "^8.4.38",
+    "postcss-loader": "^8.1.1",
+    "primeflex": "^3.3.1",
+    "primeicons": "^7.0.0",
+    "primereact": "^10.6.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-redux": "^9.1.2",
+    "react-router": "^6.23.1",
+    "react-router-dom": "^6.23.1",
+    "redux-persist": "^6.0.0",
+    "style-loader": "^4.0.0",
+    "tailwindcss": "^3.4.4",
+    "ts-loader": "^9.5.1",
+    "typescipt": "^1.0.0"
+  },
+  "devDependencies": {
+    "husky": "^9.0.11",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev": "^1.1.1",
+    "webpack-dev-server": "^5.0.4"
+  }
+}
