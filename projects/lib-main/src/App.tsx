@@ -1,6 +1,5 @@
 import ReactDOM from "react-dom/client";
 import "shared-styles";
-import ChatApp from "./ChatApp";
 import { Suspense, lazy } from "react";
 import { ErrorBoundary } from "shared";
 import { PrimeReactProvider } from "primereact/api";
@@ -18,7 +17,6 @@ root.render(
   <>
     <ErrorBoundary>
       <PrimeReactProvider value={{ unstyled: true }}>
-        <ChatApp />
         <Suspense fallback={<div>Loading...</div>}>
           <App />
         </Suspense>
