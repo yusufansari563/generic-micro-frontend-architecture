@@ -38,6 +38,13 @@
 
 2- As planning to use local storage(redux persistent) so different frame can also get a hold of it.
 
+3- Redux is implemented but one more best practice can be more scalable in mfe architecture is using observables.
+i already have one more repo with rxjs with react that can be more robust 
+
+[REACT-POKEDEX-RXJS]("https://github.com/yusufansari563/react-pokedex-rxjs")
+
+[LIVE DEMO](https://react-pokedex-rxjs-red.vercel.app/)
+
     Note: Event driven communication not used because some times difficult to manage and memory cleanup can be difficult.
 
 For large projects it is preferable to create own component or some minimal component library and create our own wrapper around it.
