@@ -1,6 +1,6 @@
 # FRONTEND ARCHITECTURE 
 
-### This architecture is build under the consideration of generic and reusability at its peak!!
+### This architecture is build under the consideration of generic and reusability
 
 ```
 /projects
