@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "cd projects/main && webpack serve --config webpack.config.js --mode development",
-    "dev:main": "cd projects/lib-main && webpack serve --config webpack.config.js --mode development",
-    "dev:mfe1": "cd projects/lib-mfe-1 && webpack serve --config webpack.config.js --mode development",
+    "dev": "cd projects/main && webpack serve --config webpack.config.js --mode development --port 3000",
+    "dev:main": "cd projects/main-lib && webpack serve --config webpack.config.js --mode development --port 3001",
+    "dev:mfe1": "cd projects/mfe-1-lib && webpack serve --config webpack.config.js --mode development --port 3002",
+    "dev:mfe2": "cd projects/mfe-2-lib && webpack serve --config webpack.config.js --mode development --port 3003",
     "build:main": "",
     "build:main-lib": "",
     "build:mfe1": "",

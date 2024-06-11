@@ -11,7 +11,8 @@
       "main": ["projects/main/main.ts"],
       "shared": ["projects/shared/public-api.ts"],
       "shared-styles": ["projects/shared/assets/index.ts"],
-      "mfe1": ["projects/mfe-1/main.ts"]
+      "mfe1": ["projects/mfe-1/main.ts"],
+      "mfe2": ["projects/mfe-2/main.ts"]
     },
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,

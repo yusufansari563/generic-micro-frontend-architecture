@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/main",
-    "types": []
+    "types": [],
   },
   "files": [
     "main.ts"

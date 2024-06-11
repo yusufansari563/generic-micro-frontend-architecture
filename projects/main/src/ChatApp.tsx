@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+
 
 const ChatApp = () => {
   const [messages, setMessages] = useState<string[]>([]);
   const [input, setInput] = useState<string>('');
+  const store = useSelector(state=>state);
 
+  useEffect(() => {
+    console.log(store,"main > chatApp");
+  }, [])
+  
   const handleSendMessage = () => {
     if (input.trim()) {
       setMessages([...messages, input]);

@@ -1,7 +1,3 @@
-import Test from './src/Test';
-import Banner from './src/Banner';
-
-export {
-    Test,
-    Banner
-}
+export const App = () => import('./src/App');
+export const Test = () => import('./src/Test');
+export const Banner = () => import('./src/Banner');

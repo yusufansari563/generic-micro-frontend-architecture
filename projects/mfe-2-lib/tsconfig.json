@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../out-tsc/lib-mfe-1",
+    "outDir": "../../out-tsc/mfe-2-lib",
     "types": []
   },
   "files": [

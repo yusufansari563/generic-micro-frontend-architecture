@@ -1,10 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit';
-// Import your slice reducers here
-// import someReducer from './someSlice';
+import TodosSlice from './TodosSlice';
 
 const rootReducer = combineReducers({
-  some: {},
-  // Add other reducers here
+  todos: TodosSlice
 });
 
 export default rootReducer;

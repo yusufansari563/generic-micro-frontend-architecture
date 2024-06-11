@@ -1,8 +1,9 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { ModuleFederationPlugin } = require("webpack").container;
 
 module.exports = {
-  entry: "./main.ts",
+  entry: "./src/index.tsx",
   module: {
     rules: [
       {
@@ -35,22 +36,42 @@ module.exports = {
         __dirname,
         "../../projects/shared/assets/index.ts"
       ),
+      mfe2: path.resolve(__dirname, "../mfe-2/main.ts"),
     },
   },
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
+    uniqueName: 'mfe2',
   },
   target: "web",
   devServer: {
     static: "./../../public",
-    compress: true, // Enable gzip compression for everything served
-    port: 3000, // Port to run the dev server
-    hot: true, // Enable hot module replacement
+    compress: true,
+    hot: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./../../public/index.html",
+    }),
+    new ModuleFederationPlugin({
+      name: "mfe2",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./main": "./main.ts",
+      },
+      shared: {
+        react: {
+          requiredVersion: "18.3.1",
+          singleton: true,
+          eager: true,
+        },
+        "react-dom": {
+          requiredVersion: "18.3.1",
+          singleton: true,
+          eager: true,
+        },
+      },
     }),
   ],
 };

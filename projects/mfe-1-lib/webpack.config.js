@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
 
 module.exports = {
-  entry: "./main.ts",
+  entry: "./src/index.tsx",
   module: {
     rules: [
       {
@@ -36,28 +36,29 @@ module.exports = {
         __dirname,
         "../../projects/shared/assets/index.ts"
       ),
-      main: path.resolve(__dirname, "../main/main.ts"),
+      mfe1: path.resolve(__dirname, "../mfe-1/main.ts"),
     },
   },
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
+    uniqueName: 'mfe1',
   },
   target: "web",
   devServer: {
     static: "./../../public",
-    compress: true, // Enable gzip compression for everything served
-    port: 3000, // Port to run the dev server
-    hot: true, // Enable hot module replacement
+    compress: true,
+    hot: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./../../public/index.html",
     }),
     new ModuleFederationPlugin({
-      name: "MainApp",
-      remotes: {
-        mfe1: "mfe1@http://localhost:3001/remoteEntry.js",
+      name: "mfe1",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./main": "./main.ts",
       },
       shared: {
         react: {

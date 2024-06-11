@@ -36,6 +36,7 @@ module.exports = {
         "../../projects/shared/assets/index.ts"
       ),
       "mfe1": path.resolve(__dirname,"../mfe-1/main.ts"),
+      "mfe2": path.resolve(__dirname,"../mfe-2/main.ts"),
     },
   },
   output: {
@@ -46,7 +47,6 @@ module.exports = {
   devServer: {
     static: "./../../public",
     compress: true, // Enable gzip compression for everything served
-    port: 3000, // Port to run the dev server
     hot: true, // Enable hot module replacement
   },
   plugins: [
