@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { ErrorBoundary, store } from "shared";
 import "shared-styles";
 import ChatApp from "./ChatApp";
+import './index.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -16,7 +17,7 @@ function App() {
   let Test;
   let Banner;
   let Table;
-  if (true) {
+  if (false) {
     Table = lazy(() => import("mfe2/main" as any).then((m) => m.Table()));
     Test = lazy(() => import("mfe1/main" as any).then((m) => m.Test()));
     Banner = lazy(() => import("mfe1/main" as any).then((m) => m.Banner()));

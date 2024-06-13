@@ -40,9 +40,10 @@ module.exports = {
     },
   },
   output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "dist"),
+    filename: "[fullhash].bundle.js",
+    path: path.resolve(__dirname, "../../dist/main"),
   },
+  devtool: false,
   target: "web",
   devServer: {
     static: "./../../public",
