@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../out-tsc/mfe-3-excel-lib",
+    "types": []
+  },
+  "files": [
+    "main.ts"
+  ]
+}
