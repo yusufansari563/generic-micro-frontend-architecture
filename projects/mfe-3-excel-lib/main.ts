@@ -1,1 +1,1 @@
-export * from "mfe2";
+export * from "mfe3";

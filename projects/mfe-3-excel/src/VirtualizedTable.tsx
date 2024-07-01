@@ -2,11 +2,13 @@
 import React, { useState, useEffect, useRef, memo, useCallback } from "react";
 import { FixedSizeGrid as Grid, GridChildComponentProps } from "react-window";
 
-const excelSheet: any = {};
-
-const fetchData = (rowIndex: number, columnIndex: number): string => {
+const fetchData = (
+  rowIndex: number,
+  columnIndex: number,
+  sheet: any
+): string => {
   const key = `R${rowIndex}C${columnIndex}`;
-  const data = excelSheet[key];
+  const data = sheet[key];
   return data || `R${rowIndex}C${columnIndex}`;
 };
 
@@ -19,19 +21,32 @@ interface CellData {
 interface CellProps extends GridChildComponentProps {
   setFocus: (row: number, col: number) => void;
   isFocused: boolean;
+  setExcelData: (args: any) => void;
+  excelData?: any;
 }
 
 const Cell: React.FC<CellProps> = memo(
-  ({ columnIndex, rowIndex, style, setFocus, isFocused }) => {
+  ({
+    columnIndex,
+    rowIndex,
+    style,
+    setFocus,
+    isFocused,
+    setExcelData,
+    excelData,
+  }) => {
     const [cellData, setCellData] = useState<string>(
-      fetchData(rowIndex, columnIndex)
+      fetchData(rowIndex, columnIndex, excelData)
     );
     const inputRef = useRef<HTMLInputElement>(null);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const newData = event.target.value;
       setCellData(newData);
-      excelSheet["R" + rowIndex + "C" + columnIndex] = newData;
+      setExcelData({
+        ...excelData,
+        ["R" + rowIndex + "C" + columnIndex]: newData,
+      });
     };
 
     const handleKeyDown = (event: React.KeyboardEvent) => {
@@ -92,6 +107,8 @@ const VirtualizedTable: React.FC = () => {
     { rowIndex: 0, columnIndex: 0 }
   );
 
+  const [excelData, setExcelData] = useState<any>({});
+
   const handleSetFocus = (rowIndex: number, columnIndex: number) => {
     setFocus({ rowIndex, columnIndex });
   };
@@ -103,7 +120,13 @@ const VirtualizedTable: React.FC = () => {
         rowIndex === focus.rowIndex && columnIndex === focus.columnIndex;
 
       return (
-        <Cell {...props} setFocus={handleSetFocus} isFocused={isFocused} />
+        <Cell
+          {...props}
+          setFocus={handleSetFocus}
+          setExcelData={setExcelData}
+          excelData={excelData}
+          isFocused={isFocused}
+        />
       );
     },
     [focus]

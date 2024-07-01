@@ -13,7 +13,7 @@
       "shared-styles": ["projects/shared/assets/index.ts"],
       "mfe1": ["projects/mfe-1/main.ts"],
       "mfe2": ["projects/mfe-2/main.ts"],
-      "mfe3-excel": ["projects/mfe-3-excel/main.ts"]
+      "mfe3": ["projects/mfe-3-excel/main.ts"]
     },
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,

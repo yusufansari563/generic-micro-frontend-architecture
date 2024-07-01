@@ -36,7 +36,7 @@ module.exports = {
         __dirname,
         "../../projects/shared/assets/index.ts"
       ),
-      mfe2: path.resolve(__dirname, "../mfe-3-excel/main.ts"),
+      mfe3: path.resolve(__dirname, "../mfe-3-excel/main.ts"),
     },
   },
   output: {

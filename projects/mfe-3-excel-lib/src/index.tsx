@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import React,{ lazy } from "react";
 import ReactDOM from "react-dom/client";
 import "shared-styles";
 import './index.css';
@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(
 root.render(<App />);
 
 function App() {
-  const App: any = lazy(() => import("mfe2" as any).then((m) => m.App()));
+  const App: any = lazy(() => import("mfe3" as any).then((m) => m.App()));
 
   return <App />;
 }
