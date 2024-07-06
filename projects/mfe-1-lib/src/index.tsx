@@ -1,7 +1,7 @@
 import React from "react";
 import { lazy } from "react";
 import ReactDOM from "react-dom/client";
-import "shared-styles";
+// import "shared-styles";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(
 
 root.render(<App />);
 
-function App() {
+export function App() {
   const App: any = lazy(() => import("mfe1" as any).then((m) => m.App()));
 
   return <App />;
