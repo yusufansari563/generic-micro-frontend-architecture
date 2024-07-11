@@ -17,14 +17,20 @@ function App() {
   let Test;
   let Banner;
   let Table;
-  if (false) {
+  let mfe5;
+  if (true) {
     Table = lazy(() => import("mfe2/main" as any).then((m) => m.Table()));
-    Test = lazy(() => import("mfe1/main" as any).then((m) => m.Test()));
-    Banner = lazy(() => import("mfe1/main" as any).then((m) => m.Banner()));
+    // Test = lazy(() => import("mfe1/main" as any).then((m) => m.Test()));
+    // Banner = lazy(() => import("mfe1/main" as any).then((m) => m.Banner()));
+    Test = lazy(() => import("mfe5/main" as any).then((m) => m.Test()));
+    console.log(Test,"Test");
+    console.log(Table,"Table");
+    
   } else {
-    Test = lazy(() => import("mfe1" as any).then((m) => m.Test()));
-    Banner = lazy(() => import("mfe1" as any).then((m) => m.Banner()));
-    Table = lazy(() => import("mfe2" as any).then((m) => m.Table()));
+    // Test = lazy(() => import("mfe1" as any).then((m) => m.Test()));
+    // Banner = lazy(() => import("mfe1" as any).then((m) => m.Banner()));
+    // Table = lazy(() => import("mfe2" as any).then((m) => m.Table()));
+    mfe5 = lazy(() => import("mfe5/main" as any).then((m) => m.Test()()));
   }
 
   return (
@@ -35,11 +41,14 @@ function App() {
           <Suspense fallback={<div>Loading...</div>}>
             <Table />
           </Suspense>
+          {/* <Suspense fallback={<div>Loading...</div>}>
+            <Test />
+          </Suspense> */}
+          {/* <Suspense fallback={<div>Loading...</div>}>
+            <Banner />
+          </Suspense> */}
           <Suspense fallback={<div>Loading...</div>}>
             <Test />
-          </Suspense>
-          <Suspense fallback={<div>Loading...</div>}>
-            <Banner />
           </Suspense>
         </PrimeReactProvider>
       </Provider>

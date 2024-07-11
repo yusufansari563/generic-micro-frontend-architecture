@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
 
 module.exports = {
-  entry: "./main.ts",
+  entry: "./src/index.tsx",
   module: {
     rules: [
       {
@@ -36,12 +36,13 @@ module.exports = {
         __dirname,
         "../../projects/shared/assets/index.ts"
       ),
-      main: path.resolve(__dirname, "../main/main.ts"),
+      mfe1: path.resolve(__dirname, "../mfe-1/main.ts"),
     },
   },
   output: {
     filename: "bundle.js",
-    path: path.resolve(__dirname, "../../dist/main-lib"),
+    path: path.resolve(__dirname, "../../dist/mfe1-lib"),
+    uniqueName: 'mfe1',
   },
   target: "web",
   devServer: {
@@ -54,11 +55,10 @@ module.exports = {
       template: "./../../public/index.html",
     }),
     new ModuleFederationPlugin({
-      name: "MainApp",
-      remotes: {
-        mfe1: "mfe1@http://localhost:3002/remoteEntry.js",
-        mfe2: "mfe2@http://localhost:3003/remoteEntry.js",
-        mfe5: "federation_provider@http://localhost:3000/mf-manifest.json",
+      name: "mfe1",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./main": "./main.ts",
       },
       shared: {
         react: {
