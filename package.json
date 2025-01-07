@@ -14,8 +14,9 @@
     "build:mfe1-lib": "cd projects/mfe-1-lib && webpack build --config webpack.config.js --mode production",
     "build:mfe2-lib": "cd projects/mfe-2-lib && webpack build --config webpack.config.js --mode production",
     "build": "webpack --config ./projects/main/webpack.config.js --mode production",
-    "prebuild": "npm run lint && npm test",
-    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
+    "prebuild": "lint-staged && npm test",
+    "test": "npm run test:mfe1",
+    "lint": "eslint 'projects/**/*.{js,jsx,ts,tsx}'",
     "test:mfe1": "jest --testPathPattern=projects/mfe-1",
     "prepare": "husky install"
   },
@@ -28,7 +29,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": [
+    "projects/**/*.{js,jsx,ts,tsx}": [
       "eslint --fix",
       "git add"
     ]
@@ -66,9 +67,11 @@
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.5.2",
     "@types/jest": "^29.5.12",
+    "eslint": "^9.17.0",
     "husky": "^9.0.11",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
+    "lint-staged": "^15.3.0",
     "ts-jest": "^29.1.5",
     "typescript": "^5.4.5",
     "webpack": "^5.91.0",
